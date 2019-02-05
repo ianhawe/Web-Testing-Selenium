@@ -6,8 +6,10 @@ class QatoolsForm
   # Constants
   FIRST_NAME_FIELD_NAME = 'firstname'
   LAST_NAME_FIELD_NAME = 'lastname'
-  SEX_FIELD_NAME = 'sex'
-  YEARS_OF_EXPERIENCE = 'exp'
+  SEX_FIELD_NAME_FIELD_NAME = 'sex'
+  YEARS_OF_EXPERIENCE_FIELD_NAME = 'exp'
+  # ADD DATE
+  PROFESSION_FIELD_NAME = 'profession'
   def initialize
     # Link to driver through ruby chrome = interchangable for other browsers
     @chrome_driver = Selenium::WebDriver.for :chrome
@@ -26,11 +28,15 @@ class QatoolsForm
   end
 
   def input_sex_field(number)
-    @chrome_driver.find_elements(:name, SEX_FIELD_NAME)[number].click
+    @chrome_driver.find_elements(:name, SEX_FIELD_NAME_FIELD_NAME)[number].click
   end
 
-  def input_years_of_experience(number)
-    @chrome_driver.find_elements(:name, YEARS_OF_EXPERIENCE)[number].click
+  def input_years_of_experience_field(number)
+    @chrome_driver.find_elements(:name, YEARS_OF_EXPERIENCE_FIELD_NAME)[number].click
+  end
+
+  def input_profession_field(number)
+    @chrome_driver.find_elements(:name, PROFESSION_FIELD_NAME)[number].click
   end
 
   def input_firstname_field_value
@@ -41,11 +47,3 @@ class QatoolsForm
     @chrome_driver.current_url
   end
 end
-test = QatoolsForm.new
-test.visit_practice_form
-test.input_firstname_field('Ian')
-test.input_lastname_field('Hawe')
-test.input_sex_field(0)
-test.input_years_of_experience(0)
-p test.input_firstname_field_value
-sleep 10
