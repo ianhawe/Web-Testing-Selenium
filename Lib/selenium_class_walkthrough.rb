@@ -1,5 +1,5 @@
 require 'selenium-webdriver'
-
+# This class will automate data into a form as well as bring back values
 class QatoolsForm
   # Page Object
   PRACTICE_FORM_URL = 'https://www.toolsqa.com/automation-practice-form'
@@ -11,13 +11,16 @@ class QatoolsForm
   # ADD DATE
   PROFESSION_FIELD_NAME = 'profession'
   TOOL_FIELD_NAME = 'tool'
+
   def initialize
     # Link to driver through ruby chrome = interchangable for other browsers
     @chrome_driver = Selenium::WebDriver.for :chrome
   end
+
   def visit_practice_form
     @chrome_driver.get(PRACTICE_FORM_URL)
   end
+
   # Passing values into the form
   def input_firstname_field(text)
     # This is to target a specific field on the webpage
@@ -45,7 +48,6 @@ class QatoolsForm
     @chrome_driver.find_elements(:name, TOOL_FIELD_NAME)[number0].click
     @chrome_driver.find_elements(:name, TOOL_FIELD_NAME)[number1].click
     @chrome_driver.find_elements(:name, TOOL_FIELD_NAME)[number2].click
-
   end
 
   def input_firstname_field_value
@@ -57,7 +59,7 @@ class QatoolsForm
   end
 
   def input_lastname_field_value
-  @chrome_driver.find_element(:name, LAST_NAME_FIELD_NAME)['value']
+    @chrome_driver.find_element(:name, LAST_NAME_FIELD_NAME)['value']
   end
 
   def input_sex_field_value
