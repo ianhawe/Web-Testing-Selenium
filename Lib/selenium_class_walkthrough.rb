@@ -10,6 +10,7 @@ class QatoolsForm
   YEARS_OF_EXPERIENCE_FIELD_NAME = 'exp'
   # ADD DATE
   PROFESSION_FIELD_NAME = 'profession'
+  AUTOMATION_TOOL_FIELD_NAME = 'tool'
   def initialize
     # Link to driver through ruby chrome = interchangable for other browsers
     @chrome_driver = Selenium::WebDriver.for :chrome
@@ -39,6 +40,10 @@ class QatoolsForm
     @chrome_driver.find_elements(:name, PROFESSION_FIELD_NAME)[number].click
   end
 
+  def input_automation_tool_field(number)
+    @chrome_driver.find_elements(:name, AUTOMATION_TOOL_FIELD_NAME)[number].click
+  end
+
   def input_firstname_field_value
     @chrome_driver.find_element(:name, FIRST_NAME_FIELD_NAME)['value']
   end
@@ -47,3 +52,4 @@ class QatoolsForm
     @chrome_driver.current_url
   end
 end
+
