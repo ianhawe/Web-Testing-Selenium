@@ -73,4 +73,26 @@ class QatoolsForm
   def input_profession_field_value
     @chrome_driver.find_element(:name, PROFESSION_FIELD_NAME)['value']
   end
+
+  def input_tool_field_value
+    @chrome_driver.find_element(:name, TOOL_FIELD_NAME)['value']
+  end
 end
+
+# Testing Area
+test = QatoolsForm.new
+test.visit_practice_form
+test.input_firstname_field('Ian')
+test.input_lastname_field('Hawe')
+test.input_sex_field(1)
+test.input_years_of_experience_field(0)
+test.input_profession_field(0, 1)
+test.input_tool_field(0, 1, 2)
+
+p test.input_firstname_field_value
+p test.input_lastname_field_value
+p test.input_sex_field_value
+p test.input_years_of_experience_field_value
+p test.input_profession_field_value
+p test.input_tool_field_value
+sleep 2
