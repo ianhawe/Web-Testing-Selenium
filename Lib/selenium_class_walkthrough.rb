@@ -11,6 +11,7 @@ class QatoolsForm
   # ADD DATE
   PROFESSION_FIELD_NAME = 'profession'
   TOOL_FIELD_NAME = 'tool'
+  DATE_TEXT_FIELD_ID = 'datepicker'
 
   def initialize
     # Link to driver through ruby chrome = interchangable for other browsers
@@ -50,12 +51,17 @@ class QatoolsForm
     @chrome_driver.find_elements(:name, TOOL_FIELD_NAME)[number2].click
   end
 
-  def input_firstname_field_value
-    @chrome_driver.find_element(:name, FIRST_NAME_FIELD_NAME)['value']
+  def input_date_field(text)
+    @chrome_driver.find_element(:id, DATE_TEXT_FIELD_ID).send_keys(text)
   end
-
+  
+  # This is where you get values from the form
   def current_url
     @chrome_driver.current_url
+  end
+
+  def input_firstname_field_value
+    @chrome_driver.find_element(:name, FIRST_NAME_FIELD_NAME)['value']
   end
 
   def input_lastname_field_value
@@ -77,22 +83,8 @@ class QatoolsForm
   def input_tool_field_value
     @chrome_driver.find_element(:name, TOOL_FIELD_NAME)['value']
   end
+
+  def input_date_field_value
+    @chrome_driver.find_element(:id, DATE_TEXT_FIELD_ID)['value']
+  end
 end
-
-# Testing Area
-test = QatoolsForm.new
-test.visit_practice_form
-test.input_firstname_field('Ian')
-test.input_lastname_field('Hawe')
-test.input_sex_field(1)
-test.input_years_of_experience_field(0)
-test.input_profession_field(0, 1)
-test.input_tool_field(0, 1, 2)
-
-p test.input_firstname_field_value
-p test.input_lastname_field_value
-p test.input_sex_field_value
-p test.input_years_of_experience_field_value
-p test.input_profession_field_value
-p test.input_tool_field_value
-sleep 2

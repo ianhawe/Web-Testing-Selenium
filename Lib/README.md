@@ -13,6 +13,9 @@ ChromeDriver Contains all browser tools and information on how the browser proce
 5. Navaigate to the folder you have got it in
 6. Move this file into the bin
 
+#### How to run 
+
+
 
 #### Learning Points
 Selenium is a server. The languages that can bind with the selenium are essentially wrappers/abstractions that drive the selenium server.
