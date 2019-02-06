@@ -8,7 +8,6 @@ class QatoolsForm
   LAST_NAME_FIELD_NAME = 'lastname'
   SEX_FIELD_NAME = 'sex'
   YEARS_OF_EXPERIENCE_FIELD_NAME = 'exp'
-  # ADD DATE
   PROFESSION_FIELD_NAME = 'profession'
   TOOL_FIELD_NAME = 'tool'
   DATE_TEXT_FIELD_ID = 'datepicker'
@@ -88,3 +87,24 @@ class QatoolsForm
     @chrome_driver.find_element(:id, DATE_TEXT_FIELD_ID)['value']
   end
 end
+
+
+# Testing Area
+test = QatoolsForm.new
+test.visit_practice_form
+test.input_firstname_field('Ian')
+test.input_lastname_field('Hawe')
+test.input_sex_field(1)
+test.input_years_of_experience_field(0)
+test.input_profession_field(0, 1)
+test.input_tool_field(0, 1, 2)
+test.input_date_field('24/12/1991')
+
+p test.input_firstname_field_value
+p test.input_lastname_field_value
+p test.input_sex_field_value
+p test.input_years_of_experience_field_value
+p test.input_profession_field_value
+p test.input_tool_field_value
+p test.input_date_field_value
+sleep 15
